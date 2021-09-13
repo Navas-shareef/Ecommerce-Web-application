@@ -30,9 +30,9 @@ SECRET_KEY = 'django-insecure-(u3zg*zwo9cn1700f4ce6eagh+19qzd0$0#du9^23@izq38b2+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ecommerc99.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'ecommerce',
     'crispy_forms',
     'django_countries',
@@ -60,6 +62,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,6 +139,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
+
+
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
@@ -147,6 +153,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MEDIA_URL = '/media/'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #auth
 AUTHENTICATION_BACKENDS = [
@@ -167,6 +177,16 @@ SITE_ID = 1
 
 #crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dikfq7b6u',
+    'API_KEY': '147889377975657',
+    'API_SECRET': 'Hur3UFs2cNYcTeg96AFd58cXPFU'
+}
+
+
 
 
 
